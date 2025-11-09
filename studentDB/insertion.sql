@@ -17,4 +17,29 @@ VALUES
 ('Carol', 'Wanjiku', 15, 'A'),
 ('David', 'Otieno', 14, 'C');
 
-SELECT * FROM students;
+
+CREATE TABLE teachers (
+    teacher_id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    subject VARCHAR(50) NOT NULL,
+    years_of_experience INT NOT NULL
+);
+
+INSERT INTO teachers (teacher_id, name, subject, years_of_experience) VALUES
+(1, 'Mr. Karanja', 'Math', 10),
+(2, 'Ms. Achieng', 'English', 6),
+(3, 'Mr. Ouma', 'Science', 8);
+
+
+CREATE TABLE student_teacher (
+    student_id INT,
+    teacher_id INT,
+    FOREIGN KEY (student_id) REFERENCES students(student_id),
+    FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id)
+);
+
+INSERT INTO student_teacher (student_id, teacher_id) VALUES
+(1, 1),
+(2, 2),
+(3, 1),
+(4, 3);
